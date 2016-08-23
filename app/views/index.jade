@@ -2,4 +2,12 @@ extends layout
 
 block content
   h1= title
-  p Welcome to #{title}
+
+  div.redislist
+    p.
+      Items from redis
+
+  div.redisform
+    form(name="redis-form", action="/redis", method="post")
+      input(type="text", name="test")
+      input(type="submit", value="submit")

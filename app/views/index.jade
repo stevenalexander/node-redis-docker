@@ -4,8 +4,9 @@ block content
   h1= title
 
   div.redislist
-    p.
-      Items from redis
+    ul
+      each val in values
+        li= val
 
   div.redisform
     form(name="redis-form", action="/redis", method="post")

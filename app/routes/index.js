@@ -2,7 +2,7 @@ var express = require('express')
 var router = express.Router()
 
 var redis = require('redis')
-var client = redis.createClient()
+var client = redis.createClient(6379, 'redis')
 
 client.on('error', function (err) {
   console.log('Error ' + err)
@@ -18,7 +18,9 @@ router.get('/', function (req, res) {
       res.render('index', {title: 'Node Redis', values: null})
     } else {
       console.dir(obj)
-      values.push(obj.test)
+      if (obj) {
+        values.push(obj.test)
+      }
       res.render('index', {title: 'Node Redis', values: values})
     }
   })
